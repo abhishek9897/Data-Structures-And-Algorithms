@@ -24,7 +24,7 @@ void permutation(int arr[N],int currentBox,int toSelect)
 		if(arr[i]==0)
 		{
 			arr[i]=currentBox;
-			combination(arr,currentBox+1,toSelect);
+			permutation(arr,currentBox+1,toSelect);
 			arr[i]=0;	
 		}
 		
