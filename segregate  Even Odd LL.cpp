@@ -18,12 +18,12 @@ void print(struct node* head){
 		head=head->next;
 	}
 }
-struct node* evenOdd(struct node*head){
+void evenOdd(struct node**head){
 	struct node* evenStart=NULL;
 	struct node* oddStart=NULL;
 	struct node* evenEnd=NULL;
 	struct node* oddEnd=NULL;
-	struct node* temp=head;
+	struct node* temp=*head;
 	while(temp){
 //		 EVEN
 		if(temp->data%2==0){
@@ -54,11 +54,14 @@ struct node* evenOdd(struct node*head){
 		}
 
 	}
+	if(evenStart==NULL or oddStart==NULL){
+		return;
+	}
 	
-		head=evenStart;
+		
 		evenEnd->next=oddStart;
 		oddEnd->next=NULL;
-		return head;
+		*head=evenStart;
 	
 
 	
@@ -73,7 +76,7 @@ int main(){
     head->next->next->next->next=newnode(5);
     head->next->next->next->next->next=newnode(4);
     
-    struct node* newhead=evenOdd(head);
+    evenOdd(&head);
     print(newhead);
 	return 0;
 }
