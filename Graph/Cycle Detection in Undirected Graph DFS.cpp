@@ -4,13 +4,13 @@ void add(vector<int> arr[],int a,int b){
 	arr[a].push_back(b);
 	arr[b].push_back(a);
 }
-bool detectUsingBfs(vector<int> arr[],int start,vector<bool> &visited,int parent){
+bool detectUsingDfs(vector<int> arr[],int start,vector<bool> &visited,int parent){
 	visited[start]=true;
 
   for(auto i:arr[start]){
 		if(visited[i]==false){
        
-			 if(detectUsingBfs(arr,i,visited,start)){
+			 if(detectUsingDfs(arr,i,visited,start)){
 				 return true;
 			 }
 			 }
@@ -21,7 +21,7 @@ bool detectUsingBfs(vector<int> arr[],int start,vector<bool> &visited,int parent
 		return false;
 	}
 
-bool bfsUtil(vector<int> arr[],int n){
+bool DfsUtil(vector<int> arr[],int n){
    vector<bool>visited(n,false);
 	 for(int i=1;i<n;i++){
 	  if(visited[i]==false){
@@ -43,7 +43,7 @@ int main(){
 
 	
 
-if(bfsUtil(arr,9)){
+if(DfsUtil(arr,9)){
 	cout<<"YES";
 }
 else{
